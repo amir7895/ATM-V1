@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- ========= CONSOLE APPENDER ========= -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ========= TURN OFF HIBERNATE NOISE ========= -->
+    <logger name="org.hibernate" level="ERROR"/>
+    <logger name="org.hibernate.SQL" level="OFF"/>
+    <logger name="org.hibernate.type" level="OFF"/>
+    <logger name="org.hibernate.orm.jdbc.bind" level="OFF"/>
+    <logger name="org.hibernate.engine" level="OFF"/>
+    <logger name="org.hibernate.boot" level="OFF"/>
+    <logger name="org.hibernate.stat" level="OFF"/>
+
+    <!-- ========= TURN OFF JPA ========= -->
+    <logger name="jakarta.persistence" level="ERROR"/>
+
+    <!-- ========= ROOT (ONLY YOUR PRINTS) ========= -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
