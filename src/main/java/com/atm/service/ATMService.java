@@ -81,6 +81,7 @@ public class ATMService {
             t.setAmount(amount);
             t.setType("DEPOSIT");
             t.setTime(LocalDateTime.now());
+            t.setCreatedAt(LocalDateTime.now());
 
             em.persist(t);
             em.merge(atmState);
@@ -147,6 +148,7 @@ public class ATMService {
             t.setAmount(amount);
             t.setType("WITHDRAW");
             t.setTime(LocalDateTime.now());
+            t.setCreatedAt(LocalDateTime.now());
 
             em.persist(t);
             em.merge(atmState);
@@ -207,13 +209,14 @@ public class ATMService {
             t1.setAccount(sender);
             t1.setAmount(amount);
             t1.setType("TRANSFER_OUT");
-            t1.setTime(LocalDateTime.now());
+            t1.setCreatedAt(LocalDateTime.now());
 
             Transaction t2 = new Transaction();
             t2.setAccount(receiver);
             t2.setAmount(amount);
             t2.setType("TRANSFER_IN");
             t2.setTime(LocalDateTime.now());
+            t2.setCreatedAt(LocalDateTime.now());
 
             em.persist(t1);
             em.persist(t2);
