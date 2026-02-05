@@ -5,6 +5,8 @@ import com.atm.model.Account;
 import com.atm.model.ATMState;
 import com.atm.service.ATMService;
 import jakarta.persistence.EntityManager;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +21,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AppTest {
 
     private ATMService service;
+
+    @BeforeAll
+    public static void useTestPersistenceUnit() {
+        System.setProperty("atm.persistence.unit", "atmTestPU");
+    }
+
+    @AfterAll
+    public static void clearTestPersistenceUnit() {
+        System.clearProperty("atm.persistence.unit");
+    }
 
     @BeforeEach
     public void setup() {
